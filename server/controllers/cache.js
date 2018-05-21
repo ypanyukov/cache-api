@@ -1,6 +1,7 @@
 const Cache = require('../models/cache');
 
 const Logger = require('../../initializers/logger');
+const random = require('../helpers/random');
 
 module.exports = (app) => {
   app.get('/cache', async (req, res, next) => {
@@ -43,7 +44,7 @@ module.exports = (app) => {
         const newCacheObject = await Cache.findOneAndUpdate({ key }, {
           key,
           ttl: cacheObject && cacheObject.ttl,
-          rnd: Date.now(),
+          rnd: random(),
         }, {
           upsert: true,
           new: true,

@@ -2,6 +2,8 @@ const config = require('config');
 const mongoose = require('mongoose');
 const mongooseUniqueValidator = require('mongoose-unique-validator');
 
+const random = require('../helpers/random');
+
 const { Schema } = mongoose;
 
 const Cache = new Schema({
@@ -14,7 +16,7 @@ const Cache = new Schema({
 
   rnd: {
     type: String,
-    default: Date.now(),
+    default: random(),
   },
 
   // milliseconds
